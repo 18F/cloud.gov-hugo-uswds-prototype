@@ -1,0 +1,14 @@
+version: "3.2"
+
+services:
+  hugo:
+    image: klakegg/hugo:0.95.0-ext-alpine
+    volumes:
+      - ./:/src
+    ports:
+      - "1313:1313"
+    entrypoint: hugo
+    command: server --bind=0.0.0.0
+    environment:
+      HUGO_ENV: development
+      HUGO_CACHEDIR: /src/resources/_cache
