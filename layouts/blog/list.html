@@ -1,0 +1,38 @@
+{{ define "main" }}
+  <div class="usa-section">
+    <main id="main-content">
+      <div class="grid-container">
+        <div class="grid-row grid-gap">
+          {{ .Content }}
+        </div>
+        <div class="grid-row grid-gap">
+          <ul class="usa-card-group grid-col-8">
+            {{ range .Paginator.Pages.ByDate.Reverse }}
+              <li class="usa-card usa-card--flag usa-card--media-right">
+                <div class="usa-card__container">
+                  <header class="usa-card__header">
+                    <h2 class="usa-card__heading"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+                    <div class="margin-y-1 text-uppercase text-ls-1 font-mono-2xs">
+                      <span class="usa-sr-only">Published</span>
+                      {{ .Date.Format "January 2, 2006" }}
+                    </div>
+                  </header>
+                  <div class="usa-card__media usa-card__media--exdent">
+                    <div class="usa-card__img">
+                      <img src="{{ (.Resources.GetMatch .Params.image | fingerprint "md5").Permalink  }}"
+                        alt="A placeholder image">
+                    </div>
+                  </div>
+
+                  <div class="usa-card__body">
+                    <p>{{ .Params.excerpt }}</p>
+                  </div>
+                </div>
+              </li>
+            {{ end }}
+          </ul>
+        </div>
+      </div>
+    </main>
+  </div>
+{{ end }}

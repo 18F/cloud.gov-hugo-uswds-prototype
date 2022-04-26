@@ -1,0 +1,4 @@
+{{- $sassOpts := dict "includePaths" (slice "node_modules") -}}
+{{- $postCssOpts := dict "use" "autoprefixer" }}
+{{- $stylesheet := resources.Get . | resources.ExecuteAsTemplate . . | toCSS $sassOpts | resources.PostCSS $postCssOpts | minify | fingerprint "sha256" -}}
+<link rel="stylesheet" href="{{ $stylesheet.RelPermalink }}" integrity="{{ $stylesheet.Data.Integrity }}">

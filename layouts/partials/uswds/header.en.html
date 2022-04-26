@@ -1,0 +1,50 @@
+<a class="usa-skipnav" href="#main-content">Skip to main content</a>
+{{ partial "uswds/banner.en.html" }}
+<div class="usa-overlay"></div>
+
+<header class="usa-header usa-header--basic">
+  <div class="usa-nav-container">
+    <div class="usa-navbar">
+      <div class="usa-logo" id="basic-logo">
+        <em class="usa-logo__text">
+          <a href="{{ relref . "/" }}" title="{{ .Site.Title }}">
+            {{ .Site.Title }}
+          </a>
+        </em>
+      </div>
+      <button class="usa-menu-btn">Menu</button>
+    </div>
+    <nav aria-label="Primary navigation" class="usa-nav">
+      <button class="usa-nav__close">
+        <img src="{{ (resources.Get "uswds/dist/img/usa-icons/close.svg" | fingerprint "md5" ).Permalink }}" role="img" alt="Close" />
+      </button>
+      <ul class="usa-nav__primary usa-accordion">
+        {{ $currentPage := . }}
+        {{ range .Site.Menus.main }}
+          {{ if .HasChildren }}
+            <li class="usa-nav__primary-item">
+              <button class="usa-accordion__button usa-nav__link {{ if $currentPage.HasMenuCurrent "main" . }}usa-current{{ end }}" aria-expanded="false"
+                aria-controls="{{ .Name | urlize }}-menu-item">
+                <span>{{ .Name }}</span>
+              </button>
+
+              <ul id="{{ .Name | urlize }}-menu-item" class="usa-nav__submenu">
+                {{ range .Children }}
+                  <li class="usa-nav__submenu-item">
+                    <a href="{{ .URL }}">{{ .Name }}</a>
+                  </li>
+                {{ end }}
+              </ul>
+            </li>
+          {{ else }}
+            <li class="usa-nav__primary-item">
+              <a href="{{ .URL }}" class="usa-nav__link {{ if $currentPage.HasMenuCurrent "main" . }}usa-current{{ end }}">
+                <span>{{ .Name }}</span>
+              </a>
+            </li>
+          {{ end }}
+        {{ end }}
+      </ul>
+    </nav>
+  </div>
+</header>

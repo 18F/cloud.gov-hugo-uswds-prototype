@@ -1,0 +1,14 @@
+{
+  "name": "cloud.gov-hugo-uswds-prototype",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "preinstall": "rm -rf static/uswds/ && mkdir static/uswds/",
+    "postinstall": "cp -r node_modules/uswds/dist/ static/uswds/"
+  },
+  "dependencies": {
+    "@hotwired/stimulus": "^3.0.1",
+    "uswds": "^2.13.3"
+  }
+}

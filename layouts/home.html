@@ -1,0 +1,25 @@
+{{ define "main" }}
+  {{ $page := . }}
+  {{ with .Params.hero }}
+    <section class="usa-hero usa-section" aria-label="Introduction">
+      <div class="grid-container">
+        <div class="usa-hero__callout">
+          <h1 class="usa-hero__heading">
+            <span class="usa-hero__heading--alt">{{ .title }}</span>
+          </h1>
+          <p>{{ .text }}</p>
+          {{ with .action }}
+            <a class="usa-button" href="{{ relref $page .link }}">{{ .title }}</a>
+          {{ end }}
+        </div>
+      </div>
+    </section>
+  {{ end }}
+  <section class="grid-container usa-section">
+    <div class="grid-row grid-gap">
+      <div class="usa-prose">
+        {{ .Content }}
+      </div>
+    </div>
+  </section>
+{{ end }}

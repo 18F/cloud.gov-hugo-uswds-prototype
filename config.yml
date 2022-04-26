@@ -1,0 +1,20 @@
+baseURL: http://example.org/
+languageCode: en-us
+title: Hugo prototype
+relativeURLs: true
+
+menus: main
+
+ignoreFiles:
+  - .gitignore
+  - docker-compose.yml
+  - Dockerfile
+  - package.json
+  - yarn.lock
+
+module:
+  mounts:
+  - source: assets
+    target: assets
+  - source: node_modules
+    target: assets

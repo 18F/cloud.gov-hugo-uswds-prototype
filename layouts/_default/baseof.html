@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+  <head>
+    <title>{{ if .Title }}{{ .Title }} • {{ end }}{{ .Site.Title }}</title>
+    {{ partial "head/meta.html" . }}
+    {{ partial "head/stylesheet.html" "styles/index.scss" }}
+    {{ partial "head/script.html" "scripts/index.js" }}
+  </head>
+
+  <body>
+    {{ partial "uswds/header.en.html" . }}
+    {{ block "main" . -}}{{- end }}
+    {{ partial "uswds/identifier.en.html" . }}
+  </body>
+</html>

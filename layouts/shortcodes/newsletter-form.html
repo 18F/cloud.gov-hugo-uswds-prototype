@@ -1,0 +1,23 @@
+<div data-controller="newsletter">
+  <div class="usa-alert usa-alert--success usa-alert--slim" hidden data-newsletter-target="successMessage">
+    <div class="usa-alert__body">
+      <p class="usa-alert__text">
+        Your email address was subscribed successfully!
+      </p>
+    </div>
+  </div>
+
+  <div class="usa-alert usa-alert--error usa-alert--slim" hidden data-newsletter-target="errorMessage">
+    <div class="usa-alert__body">
+      <p class="usa-alert__text">
+        An unexpected error occurred and your email address was not subscribed. Try again, or contact us for more help.
+      </p>
+    </div>
+  </div>
+
+  <form data-action="submit->newsletter#subscribe" class="usa-form">
+    <label class="usa-label" for="{{ .Get "id" }}">{{ .Get "label" }}</label>
+    <input data-newsletter-target="email" class="usa-input" id="{{ .Get "id" }}" type="email" required>
+    <input class="usa-button" type="submit" value="Subscribe">
+  </form>
+</div>

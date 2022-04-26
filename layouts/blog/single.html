@@ -1,0 +1,26 @@
+{{ define "main" }}
+  <div class="usa-section padding-top-0">
+    <div class="grid-container">
+      <div class="grid-row grid-gap">
+        <main id="main-content">
+          <nav class="usa-breadcrumb" aria-label="Breadcrumbs,,">
+            <ol class="usa-breadcrumb__list">
+              <li class="usa-breadcrumb__list-item">
+                <a href="{{ relref . .Section }}" class="usa-breadcrumb__link">
+                  <span>Blog</span>
+                </a>
+              </li>
+              <li class="usa-breadcrumb__list-item usa-current" aria-current="page">
+                <span>{{ .Title }}</span>
+              </li>
+            </ol>
+          </nav>
+          <div class="usa-prose">
+            <h1>{{ .Title }}</h1>
+            {{ .Content }}
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+{{ end }}
