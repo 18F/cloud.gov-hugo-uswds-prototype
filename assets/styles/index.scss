@@ -1,5 +1,5 @@
-$theme-font-path: '../uswds/fonts';
-$theme-image-path: '../uswds/img';
+$theme-font-path: '../uswds/dist/fonts';
+$theme-image-path: '../uswds/dist/img';
 $theme-show-notifications: false;
 
 @import "uswds/dist/scss/uswds"
